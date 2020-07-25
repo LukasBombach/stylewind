@@ -9,7 +9,7 @@ describe("styled", () => {
     if (!msg.match(acceptableWarnings)) throw new Error("Unexpected warning");
   }
 
-  test.each(tags)("creates a %s component", (tag) => {
+  test.each(tags)("creates an <%s> element", (tag) => {
     jest.spyOn(console, "error").mockImplementationOnce(isAcceptable);
     const Component = styled(tag);
     const { container } = render(<Component />);
