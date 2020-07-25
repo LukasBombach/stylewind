@@ -1,6 +1,6 @@
-function useStyles<P extends Record<string, string | number | boolean>>(
-  props: P
-): { className: string } {
+function useStyles<
+  P extends Record<string, string | number | boolean | undefined>
+>(props: P): { className: string } {
   const classNames: string[] = [];
 
   for (const name in props) {

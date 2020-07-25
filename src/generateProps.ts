@@ -63,7 +63,7 @@ ${Object.entries(props)
     return [key, cleanedValues];
   })
   .map(([key, values]) => {
-    return `  "${key}": ${values};`;
+    return `  "${key}"?: ${values};`;
   })
   .join(`\n`)}
 }`;

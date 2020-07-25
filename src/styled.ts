@@ -4,7 +4,7 @@ import type { FC } from "react";
 import type { Tag } from "./tags";
 import type { Props } from "./generated/props";
 
-function styled(tag: Tag, props: Props): FC {
+function styled(tag: Tag, props: Props = {}): FC<Props> {
   return ({ children, ...componentProps }) => {
     const compoundProps = useStyles({ ...props, ...componentProps });
     return createElement(tag, compoundProps, children);
