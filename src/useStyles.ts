@@ -8,8 +8,8 @@ function useStyles<
 
     if (name === "className" && typeof value === "string") {
       classNames.push(value);
-    } else if (value === true) {
-      classNames.push(name);
+    } else if (typeof value === "boolean") {
+      if (value) classNames.push(name);
     } else {
       classNames.push(`${name}-${value}`);
     }
