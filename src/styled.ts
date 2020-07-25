@@ -12,8 +12,8 @@ type Styled = typeof styled &
 
 function styled(tag: Tag, props: Props = {}): FC<Props> {
   return ({ children, ...componentProps }) => {
-    const compoundProps = useStyles({ ...props, ...componentProps });
-    return createElement(tag, compoundProps, children);
+    const className = useStyles({ ...props, ...componentProps });
+    return createElement(tag, { className }, children);
   };
 }
 
