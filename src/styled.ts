@@ -18,9 +18,7 @@ function styled(tag: Tag, props: Props = {}): FC<Props> {
 }
 
 for (const tag of tags) {
-  Object.defineProperty(styled, tag, {
-    get: () => (props?: Props) => styled(tag, props),
-  });
+  (styled as Styled)[tag] = (props?: Props) => styled(tag, props);
 }
 
 export default styled as Styled;
