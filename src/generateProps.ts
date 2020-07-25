@@ -1,6 +1,5 @@
 import { promises as fs } from "fs";
 import path from "path";
-import util from "util";
 import postcss from "postcss";
 import selectorParser from "postcss-selector-parser";
 
@@ -74,6 +73,4 @@ async function generateTypes() {
   await fs.writeFile(generatedTypesPath, types);
 }
 
-generateTypes().then((types) => {
-  console.log("done");
-});
+generateTypes();
