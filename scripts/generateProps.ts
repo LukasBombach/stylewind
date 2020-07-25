@@ -10,7 +10,11 @@ const tailwindCSSPath = path.resolve(
   "tailwindcss/dist/tailwind.css"
 );
 
-const generatedTypesPath = path.resolve(__dirname, "generated/props.ts");
+const generatedTypesPath = path.resolve(
+  __dirname,
+  "..",
+  "src/generated/props.ts"
+);
 
 async function getSelectors() {
   const css = await fs.readFile(tailwindCSSPath, "utf-8");
