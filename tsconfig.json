@@ -13,7 +13,8 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "lib": ["es2019"]
   },
   "include": ["src/**/*", "scripts/**/*"]
 }
