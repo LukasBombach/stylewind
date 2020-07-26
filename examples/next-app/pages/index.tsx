@@ -14,7 +14,7 @@ const Headline = styled.h1({
 
 const IndexPage = () => (
   <Layout>
-    <Headline>Hello Next.js 👋</Headline>
+    <Headline>Hello Next.js with stylewind 👋</Headline>
     <Card />
   </Layout>
 );
