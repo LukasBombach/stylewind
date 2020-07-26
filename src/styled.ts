@@ -3,7 +3,7 @@ import useStyles from "./useStyles";
 import tags from "./tags";
 import type { FC } from "react";
 import type { Tag } from "./tags";
-import type { Props } from "./generated/props";
+import type { Props } from "./generated/props.types";
 
 type Styled = typeof styled &
   {

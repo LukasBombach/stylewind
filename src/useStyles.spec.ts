@@ -1,8 +1,43 @@
 import useStyles from "./useStyles";
-import { getTailwindClasses } from "./tailwind";
-import props from "./generated/props.json";
+import generatedClasses from "./generated/classes";
+import props from "./generated/props";
+
+import type { Value } from "./parseCss";
+import type { TailwindClasses } from "./generated/classes";
+
+type Paramter = [typeof props[number]["name"], Value];
+
+type TailwindClass = TailwindClasses[number];
+
+function getAllPropParamters() {
+  const params: Paramter[] = [];
+  for (const { name, values } of props) {
+    for (const value of values) {
+      params.push([name, value]);
+    }
+  }
+  return params;
+}
 
 describe("useStyles", () => {
+  const propParameters = getAllPropParamters();
+
+  test.each(propParameters)(
+    "tailwind contains the generated class for { %s: %s }",
+    (name, value) => {
+      const props = { [name]: value };
+      const className = useStyles(props);
+      if (value === false) {
+        expect(className).toBe(undefined);
+      } else {
+        expect(className).not.toBe(undefined);
+        expect(generatedClasses.includes(className as TailwindClass)).toBe(
+          true
+        );
+      }
+    }
+  );
+
   test("preserves the original className", () => {
     const className = "foo bar";
     expect(useStyles({ className })).toBe(className);
@@ -27,9 +62,11 @@ describe("useStyles", () => {
     expect(useStyles({})).toBe(undefined);
   });
 
-  test("generates all classNames", async () => {
-    const tailwindClasses = await getTailwindClasses();
-    for (const { name, values } of props) {
-    }
+  test("there is no tailwind class useStyles cannot generate", () => {
+    const generatableClasses = propParameters.filter(
+      ([, value]) => value !== false
+    );
+
+    expect(generatableClasses.length).toBe(generatedClasses.length);
   });
 });

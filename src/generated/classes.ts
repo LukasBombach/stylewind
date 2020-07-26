@@ -1,4 +1,5 @@
-[
+
+const data = [
   "-m-1",
   "-m-10",
   "-m-12",
@@ -13849,4 +13850,6 @@
   "z-40",
   "z-50",
   "z-auto"
-]
+] as const;
+export type TailwindClasses = typeof data;
+export default data;

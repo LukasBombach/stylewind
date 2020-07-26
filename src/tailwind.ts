@@ -11,9 +11,9 @@ export const tailwindCSSPath = path.resolve(
   "tailwindcss/dist/tailwind.css"
 );
 
-const generatedTSPath = path.resolve(__dirname, "generated/props.ts");
-const generatedPropsPath = path.resolve(__dirname, "generated/props.json");
-const generatedClassesPath = path.resolve(__dirname, "generated/classes.json");
+const generatedTSPath = path.resolve(__dirname, "generated/props.types.ts");
+const generatedPropsPath = path.resolve(__dirname, "generated/props.ts");
+const generatedClassesPath = path.resolve(__dirname, "generated/classes.ts");
 
 export async function getTailWindCss(): Promise<string> {
   return await fs.readFile(tailwindCSSPath, "utf-8");
@@ -31,16 +31,26 @@ export async function getTailwindClasses(): Promise<string[]> {
 
 export async function generatePropsJSON(): Promise<void> {
   const props = await getTailwindProps();
-  await fs.writeFile(generatedPropsPath, JSON.stringify(props, null, 2));
+  const fileContents = serializeJsonAsConst("TailwindProps", props);
+  await fs.writeFile(generatedPropsPath, fileContents);
 }
 
 export async function generateClassesJSON(): Promise<void> {
   const classes = await getTailwindClasses();
-  await fs.writeFile(generatedClassesPath, JSON.stringify(classes, null, 2));
+  const fileContents = serializeJsonAsConst("TailwindClasses", classes);
+  await fs.writeFile(generatedClassesPath, fileContents);
 }
 
 export async function generateTypeScriptInterface(): Promise<void> {
   const props = await getTailwindProps();
   const tsInterface = getTSInterface(props);
   await fs.writeFile(generatedTSPath, tsInterface);
+}
+
+function serializeJsonAsConst(name: string, data: any): string {
+  return `
+const data = ${JSON.stringify(data, null, 2)} as const;
+export type ${name} = typeof data;
+export default data;
+`;
 }
