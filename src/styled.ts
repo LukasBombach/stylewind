@@ -3,12 +3,13 @@ import useStyles from "./useStyles";
 import tags from "./tags";
 
 import type { FC } from "react";
-import type { Tag } from "./tags";
 import type { Props } from "./generated/props.types";
 
 type Styled = typeof styled &
   {
-    [T in Tag]: (props?: Props) => FC<Props>;
+    [T in keyof JSX.IntrinsicElements]: (
+      props?: Props
+    ) => FC<Props & JSX.IntrinsicElements[T]>;
   };
 
 function styled<T extends keyof JSX.IntrinsicElements>(

@@ -1,5 +1,7 @@
 import styled from "stylewind";
 import Card from "../components/Card";
+import Label from "../components/Label";
+import Input from "../components/Input";
 
 const Layout = styled.main({
   container: true,
@@ -18,6 +20,24 @@ const Headline = styled.h1({
   mb: 2,
 });
 
+const NewsletterSignup = styled.footer({
+  "md:flex": true,
+  "md:items": "center",
+});
+
+const NewsLetterHeadline = styled.h2({
+  text: "xl",
+  mb: 12,
+});
+
+const Left = styled.div({
+  "md:w": "1/12",
+});
+
+const Right = styled.div({
+  "md:w": "4/12",
+});
+
 const IndexPage = () => (
   <Layout>
     <Headline>Hello Next.js with stylewind 👋</Headline>
@@ -26,6 +46,19 @@ const IndexPage = () => (
       <Card />
       <Card />
     </Grid>
+    <NewsletterSignup>
+      <NewsLetterHeadline>Signup (fake)</NewsLetterHeadline>
+      <Left>
+        <Label for="email-input">Email</Label>
+      </Left>
+      <Right>
+        <Input
+          id="email-input"
+          type="text"
+          placeholder="won't work, this is just fake UI"
+        />
+      </Right>
+    </NewsletterSignup>
   </Layout>
 );
 
