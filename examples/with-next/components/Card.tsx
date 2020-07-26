@@ -1,7 +1,6 @@
 import styled from "stylewind";
 
 const Container = styled.article({
-  max: "w-sm",
   overflow: "hidden",
   shadow: "lg",
   rounded: true,
