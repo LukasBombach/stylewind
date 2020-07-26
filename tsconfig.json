@@ -4,6 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
+    "downlevelIteration": true,
     "esModuleInterop": true,
     "jsx": "react",
     "moduleResolution": "node",
