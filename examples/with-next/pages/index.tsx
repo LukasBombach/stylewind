@@ -7,7 +7,8 @@ const Layout = styled.main({
 });
 
 const Grid = styled.div({
-  grid: [true, "cols-3"],
+  "sm:grid": "cols-1",
+  "md:grid": "cols-3",
   gap: 4,
 });
 

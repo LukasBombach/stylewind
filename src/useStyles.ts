@@ -31,24 +31,3 @@ function useStyles<P extends {}>(props: P): StyledProps<P> {
 }
 
 export default useStyles;
-
-/*   const entries = Object.entries(props)
-
-  for (const [name, propValue] of entries) {
-
-
-    const values = Array.isArray(propValue) ? propValue : [propValue]
-
-    for (const value of values) {
-      if (name === "className" && typeof value === "string") {
-        classNames.push(value);
-      }else if (typeof value === "boolean") {
-        if (value) classNames.push(name);
-      } else if (isTailwindClass(value) ){
-        classNames.push(value);
-      }
-
-    }
-
-    
-  } */

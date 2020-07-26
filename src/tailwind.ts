@@ -65,9 +65,10 @@ export default (str: string): str is TailwindClasses[number]  => /${tailwindClas
 
 export async function generateIsTailwindProp(): Promise<void> {
   const props = await getTailwindProps();
-  const propNames = JSON.stringify(Object.keys(props), null, 2);
-  const fileContents = `const propNames = ${propNames} as const;
-export default (str: string) => propNames.includes(str);`;
+  const propNames = props.map((p) => p.name);
+  const serializedNames = JSON.stringify(propNames, null, 2);
+  const fileContents = `const propNames = ${serializedNames} as const;
+export default (str: any) => propNames.includes(str);`;
   await fs.writeFile(generatedIsTailwindPropPath, fileContents);
 }
 
