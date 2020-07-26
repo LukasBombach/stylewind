@@ -2,10 +2,10 @@ import {
   generateTypeScriptInterface,
   generatePropsJSON,
   generateClassesJSON,
-  generateTailwindRegex,
+  generateIsTailwindProp,
 } from "../src/tailwind";
 
 generateTypeScriptInterface();
 generatePropsJSON();
 generateClassesJSON();
-generateTailwindRegex();
+generateIsTailwindProp();

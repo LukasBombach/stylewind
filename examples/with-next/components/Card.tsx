@@ -23,7 +23,7 @@ const Headline = styled.h2({
 });
 
 const Intro = styled.p({
-  text: "gray-700", //["gray-700", "base"],
+  text: ["gray-700", "base"],
 });
 
 const Body = styled.p({
@@ -37,7 +37,7 @@ const Tag = styled.span({
   rounded: "full",
   px: 3,
   py: 1,
-  text: "sm", // ["sm", "gray-700"]
+  text: ["sm", "gray-700"],
   font: "semibold",
   mr: 2,
 });

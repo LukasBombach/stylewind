@@ -20,6 +20,10 @@ const generatedRegExPath = path.resolve(
   __dirname,
   "generated/isTailwindClass.ts"
 );
+const generatedIsTailwindPropPath = path.resolve(
+  __dirname,
+  "generated/isTailwindProp.ts"
+);
 
 export async function getTailWindCss(): Promise<string> {
   return await fs.readFile(tailwindCSSPath, "utf-8");
@@ -57,6 +61,14 @@ export async function generateTailwindRegex(): Promise<void> {
   const fileContents = `import type { TailwindClasses } from "./classes";
 export default (str: string): str is TailwindClasses[number]  => /${tailwindClassesRegex}/.test(str);`;
   await fs.writeFile(generatedRegExPath, fileContents);
+}
+
+export async function generateIsTailwindProp(): Promise<void> {
+  const props = await getTailwindProps();
+  const propNames = JSON.stringify(Object.keys(props), null, 2);
+  const fileContents = `const propNames = ${propNames} as const;
+export default (str: string) => propNames.includes(str);`;
+  await fs.writeFile(generatedIsTailwindPropPath, fileContents);
 }
 
 function serializeJsonAsConst(name: string, data: any): string {

@@ -4,11 +4,13 @@ export function getTSInterface(props: Prop[]): string {
   return `// prettier-ignore
 export interface Props {
 ${props.map(getProp).join(`\n`)}
-}`;
+}
+
+export type PropValue<T> = T[] | T`;
 }
 
 function getProp({ name, values }: Prop): string {
-  return `  "${name}"?: ${getValues(values)};`;
+  return `  "${name}"?: PropValue<${getValues(values)}>;`;
 }
 
 function getValues(values: Value[]): string {

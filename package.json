@@ -10,9 +10,9 @@
   "unpkg": "dist/index.umd.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
-    "test": "jest",
+    "build": "yarn generate && microbundle",
+    "dev": "yarn generate && microbundle watch",
+    "test": "yarn generate && jest",
     "generate": "ts-node scripts/generateDevelopmentFiles.ts"
   },
   "devDependencies": {

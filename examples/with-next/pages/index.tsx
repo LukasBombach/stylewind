@@ -6,6 +6,11 @@ const Layout = styled.main({
   mx: "auto",
 });
 
+const Grid = styled.div({
+  grid: [true, "cols-3"],
+  gap: 4,
+});
+
 const Headline = styled.h1({
   font: "bold",
   text: "3xl",
@@ -15,7 +20,11 @@ const Headline = styled.h1({
 const IndexPage = () => (
   <Layout>
     <Headline>Hello Next.js with stylewind 👋</Headline>
-    <Card />
+    <Grid>
+      <Card />
+      <Card />
+      <Card />
+    </Grid>
   </Layout>
 );
 
