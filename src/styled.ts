@@ -10,7 +10,10 @@ type Styled = typeof styled &
     [T in Tag]: (props?: Props) => FC<Props>;
   };
 
-function styled(tag: Tag, props: Props = {}): FC<Props> {
+function styled<T extends keyof JSX.IntrinsicElements>(
+  tag: T,
+  props: Props = {}
+): FC<Props & JSX.IntrinsicElements[T]> {
   return ({ children, ...componentProps }) => {
     const className = useStyles({ ...props, ...componentProps });
     return createElement(tag, { className }, children);
@@ -18,7 +21,8 @@ function styled(tag: Tag, props: Props = {}): FC<Props> {
 }
 
 for (const tag of tags) {
-  (styled as Styled)[tag] = (props?: Props) => styled(tag, props);
+  (styled as Styled)[tag] = (props?: Props) =>
+    styled(tag as keyof JSX.IntrinsicElements, props);
 }
 
 export default styled as Styled;
