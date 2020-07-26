@@ -17,7 +17,7 @@ export async function getClassNames(css: string): Promise<string[]> {
       });
     }).processSync(rule);
   });
-  return classNames;
+  return [...new Set(classNames)].sort();
 }
 
 export async function getProps(css: string): Promise<Prop[]> {

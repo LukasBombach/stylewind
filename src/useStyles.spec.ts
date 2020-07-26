@@ -1,4 +1,6 @@
 import useStyles from "./useStyles";
+import { getTailwindClasses } from "./tailwind";
+import props from "./generated/props.json";
 
 describe("useStyles", () => {
   test("preserves the original className", () => {
@@ -23,5 +25,11 @@ describe("useStyles", () => {
 
   test("returns empty styles as undefined", () => {
     expect(useStyles({})).toBe(undefined);
+  });
+
+  test("generates all classNames", async () => {
+    const tailwindClasses = await getTailwindClasses();
+    for (const { name, values } of props) {
+    }
   });
 });
