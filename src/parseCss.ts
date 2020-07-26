@@ -6,7 +6,7 @@ export interface Prop {
   values: Value[];
 }
 
-export type Value = string | number | boolean | undefined;
+export type Value = string | number | boolean;
 
 export async function getClassNames(css: string): Promise<string[]> {
   const classNames: string[] = [];
@@ -30,7 +30,7 @@ export async function getProps(css: string): Promise<Prop[]> {
 function parseClassName(className: string): Prop {
   const [, name, rawValue] = className.match(/(^-?[^-]+)-?(.*)/) || [];
   if (!name) throw new Error(`failed to get prop for ${className}`);
-  const values = [parseValue(rawValue)];
+  const values = parseValue(rawValue);
   return { name, values };
 }
 
@@ -48,7 +48,7 @@ function mergeParsedClassNames(props: Prop[]): Prop[] {
 }
 
 function parseValue(value: string) {
-  if (value === "") return "boolean";
-  if (/^\d+$/.test(value)) return value;
-  return `"${value}"`;
+  if (value === "") return [true, false];
+  if (/^\d+$/.test(value)) return [parseInt(value)];
+  return [value];
 }
