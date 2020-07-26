@@ -35,28 +35,16 @@ describe("useStyles", () => {
     expect(className).toBe(undefined);
   });
 
-  test("preserves the original className", () => {
-    const className = "foo bar";
-    expect(useStyles({ className })).toBe(className);
-  });
-
-  test("returns props set to `true` as className", () => {
-    const container = true;
-    const capitalize = true;
-    const clearfix = false;
-    const props = { container, capitalize, clearfix };
-    const expectedClassName = "container capitalize";
-    expect(useStyles(props)).toBe(expectedClassName);
-  });
-
-  test("generates classNames from props with values", () => {
-    const props = { bottom: 0, box: "border" };
-    const expectedClassName = "bottom-0 box-border";
-    expect(useStyles(props)).toBe(expectedClassName);
-  });
-
-  test("returns empty styles as undefined", () => {
-    expect(useStyles({})).toBe(undefined);
+  test.each`
+    desc                 | props                                                                     | expected
+    ${"a className"}     | ${{ className: "foo bar" }}                                               | ${"foo bar"}
+    ${"a string"}        | ${{ foo: "bar" }}                                                         | ${"foo-bar"}
+    ${"a number"}        | ${{ foo: 2 }}                                                             | ${"foo-2"}
+    ${"true"}            | ${{ foo: true }}                                                          | ${"foo"}
+    ${"false"}           | ${{ foo: false }}                                                         | ${undefined}
+    ${"multiple values"} | ${{ className: "foo bar", str: "str", num: 2, true: true, false: false }} | ${"foo bar str-str num-2 true"}
+  `("generates classNames from $desc", ({ props, expected }) => {
+    expect(useStyles(props)).toBe(expected);
   });
 
   test("there is no tailwind class useStyles cannot generate", () => {
