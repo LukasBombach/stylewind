@@ -1,6 +1,6 @@
 import type { Prop } from "./parseCss";
 
-export function generateTSInterface(props: Prop[]): string {
+export function getTSInterface(props: Prop[]): string {
   return `// prettier-ignore
 export interface Props {
 ${props.map(getProp).join(`\n`)}

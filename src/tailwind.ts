@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { getProps } from "./parseCss";
-import { generateTSInterface } from "./generateTSInterface";
+import { getTSInterface } from "./getTSInterface";
 
 export const tailwindCSSPath = path.resolve(
   __dirname,
@@ -19,6 +19,6 @@ export async function getTailWindCss(): Promise<string> {
 export async function generateTypeScriptInterface(): Promise<void> {
   const css = await getTailWindCss();
   const props = await getProps(css);
-  const tsInterface = generateTSInterface(props);
+  const tsInterface = getTSInterface(props);
   await fs.writeFile(generatedTSPath, tsInterface);
 }
