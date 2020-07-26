@@ -11,7 +11,8 @@
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
-    "test": "jest"
+    "test": "jest",
+    "generate": "ts-node scripts/generateDevelopmentFiles.ts"
   },
   "devDependencies": {
     "@babel/core": "7.10.5",
