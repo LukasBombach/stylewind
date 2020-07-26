@@ -2,6 +2,8 @@ import { promises as fs } from "fs";
 import path from "path";
 import { getProps, getClassNames } from "./parseCss";
 import { getTSInterface } from "./getTSInterface";
+import tailwindClassesRegex from "./tailwindClassesRegex";
+
 import type { Prop } from "./parseCss";
 
 export const tailwindCSSPath = path.resolve(
@@ -14,6 +16,10 @@ export const tailwindCSSPath = path.resolve(
 const generatedTSPath = path.resolve(__dirname, "generated/props.types.ts");
 const generatedPropsPath = path.resolve(__dirname, "generated/props.ts");
 const generatedClassesPath = path.resolve(__dirname, "generated/classes.ts");
+const generatedRegExPath = path.resolve(
+  __dirname,
+  "generated/isTailwindClass.ts"
+);
 
 export async function getTailWindCss(): Promise<string> {
   return await fs.readFile(tailwindCSSPath, "utf-8");
@@ -45,6 +51,12 @@ export async function generateTypeScriptInterface(): Promise<void> {
   const props = await getTailwindProps();
   const tsInterface = getTSInterface(props);
   await fs.writeFile(generatedTSPath, tsInterface);
+}
+
+export async function generateTailwindRegex(): Promise<void> {
+  const fileContents = `import type { TailwindClasses } from "./classes";
+export default (str: string): str is TailwindClasses[number]  => /${tailwindClassesRegex}/.test(str);`;
+  await fs.writeFile(generatedRegExPath, fileContents);
 }
 
 function serializeJsonAsConst(name: string, data: any): string {

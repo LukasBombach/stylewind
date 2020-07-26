@@ -1,21 +1,30 @@
-type Props = Record<string, string | number | boolean | undefined>;
+import isTailwindClass from "./generated/isTailwindClass";
 
-function useStyles<P extends Props>(props: P): string | undefined {
+type Props = Record<string, string | number | boolean | undefined>;
+type StyledProps<P extends Props> = P & { className: string };
+
+function useStyles<P extends Props>(props: P): StyledProps<P> {
   const classNames: string[] = [];
+  const newProps = {} as StyledProps<P>;
 
   for (const name in props) {
     const value = props[name];
+    const className = `${name}-${value}`;
 
     if (name === "className" && typeof value === "string") {
       classNames.push(value);
     } else if (typeof value === "boolean") {
       if (value) classNames.push(name);
+    } else if (isTailwindClass(className)) {
+      classNames.push(className);
     } else {
-      classNames.push(`${name}-${value}`);
+      Object.assign(newProps, { [name]: value });
     }
   }
 
-  return classNames.length ? classNames.join(" ") : undefined;
+  newProps.className = classNames.length ? classNames.join(" ") : undefined;
+
+  return newProps;
 }
 
 export default useStyles;

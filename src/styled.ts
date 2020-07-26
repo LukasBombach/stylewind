@@ -1,7 +1,8 @@
 import { createElement } from "react";
 import useStyles from "./useStyles";
 import tags from "./tags";
-import type { FC } from "react";
+
+import type { FC, Attributes } from "react";
 import type { Tag } from "./tags";
 import type { Props } from "./generated/props.types";
 
@@ -15,8 +16,11 @@ function styled<T extends keyof JSX.IntrinsicElements>(
   props: Props = {}
 ): FC<Props & JSX.IntrinsicElements[T]> {
   return ({ children, ...componentProps }) => {
-    const className = useStyles({ ...props, ...componentProps });
-    return createElement(tag, { className }, children);
+    const styledProps = useStyles({
+      ...props,
+      ...componentProps,
+    }) as Attributes;
+    return createElement(tag, styledProps, children);
   };
 }
 

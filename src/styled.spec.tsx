@@ -3,16 +3,14 @@ import { render } from "@testing-library/react";
 import * as useStyles from "./useStyles";
 import styled from "./styled";
 import tags from "./tags";
+
 import type { Props } from "./generated/props.types";
 
-const link = `<a
-  href="#"
-/>`;
-
 describe("styled", () => {
-  function isAcceptable(msg: string) {
+  function isAcceptable(msg: string, ...rest: any[]) {
     const acceptableWarnings = /(validateDOMNesting|unrecognized in this browser)/;
-    if (!msg.match(acceptableWarnings)) throw new Error("Unexpected warning");
+    if (msg.match(acceptableWarnings)) return;
+    console.error(msg, ...rest);
   }
 
   test.each(tags)('styled("%s") creates the expected element', (tag) => {
@@ -30,47 +28,51 @@ describe("styled", () => {
   });
 
   test('styled("div", props) apply the classes from useStyles', () => {
-    const expectedClass = "expectedClass";
-    const spy = jest.spyOn(useStyles, "default").mockReturnValue(expectedClass);
+    const className = "className";
+    const spy = jest.spyOn(useStyles, "default").mockReturnValue({ className });
     const props: Props = { font: "sans" };
     const Component = styled("div", props);
     const { container } = render(<Component />);
     expect(spy).toHaveBeenCalledWith(expect.objectContaining(props));
-    expect(container.querySelector(`.${expectedClass}`)).toBeTruthy();
+    expect(container.querySelector(`.${className}`)).toBeTruthy();
     spy.mockRestore();
   });
 
   test("styled.div(props) apply the classes from useStyles", () => {
-    const expectedClass = "expectedClass";
-    const spy = jest.spyOn(useStyles, "default").mockReturnValue(expectedClass);
+    const className = "className";
+    const spy = jest.spyOn(useStyles, "default").mockReturnValue({ className });
     const props: Props = { font: "sans" };
     const Component = styled.div(props);
     const { container } = render(<Component />);
     expect(spy).toHaveBeenCalledWith(expect.objectContaining(props));
-    expect(container.querySelector(`.${expectedClass}`)).toBeTruthy();
+    expect(container.querySelector(`.${className}`)).toBeTruthy();
     spy.mockRestore();
   });
 
   test("<Styled {...props}> apply the classes from useStyles", () => {
-    const expectedClass = "expectedClass";
-    const spy = jest.spyOn(useStyles, "default").mockReturnValue(expectedClass);
+    const className = "className";
+    const spy = jest.spyOn(useStyles, "default").mockReturnValue({ className });
     const props: Props = { font: "sans" };
     const Component = styled("div");
     const { container } = render(<Component {...props} />);
     expect(spy).toHaveBeenCalledWith(expect.objectContaining(props));
-    expect(container.querySelector(`.${expectedClass}`)).toBeTruthy();
+    expect(container.querySelector(`.${className}`)).toBeTruthy();
     spy.mockRestore();
   });
 
-  test('styled("a") returns a TypeScript Anchor type', () => {
-    const Link = styled("a");
-    const { container } = render(<Link href="#" />);
-    expect(container.firstElementChild).toMatchInlineSnapshot(link);
+  test('styled("a") accepts link props', () => {
+    const Link = styled("a", { font: "sans" });
+    const { container } = render(<Link href="#" bg="black" />);
+    const el = container.firstElementChild;
+    expect(el.getAttribute("class")).toBe("font-sans bg-black");
+    expect(el.getAttribute("href")).toBe("#");
   });
 
-  test("styled.a() returns a TypeScript Anchor type", () => {
-    const Link = styled.a();
-    const { container } = render(<Link href="#" />);
-    expect(container.firstElementChild).toMatchInlineSnapshot(link);
+  test("styled.a() accepts link props", () => {
+    const Link = styled.a({ font: "sans" });
+    const { container } = render(<Link href="#" bg="black" />);
+    const el = container.firstElementChild;
+    expect(el.getAttribute("class")).toBe("font-sans bg-black");
+    expect(el.getAttribute("href")).toBe("#");
   });
 });
