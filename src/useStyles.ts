@@ -1,9 +1,8 @@
 import isTailwindClass from "./generated/isTailwindClass";
 
-type Props = Record<string, string | number | boolean | undefined>;
-type StyledProps<P extends Props> = P & { className: string };
+type StyledProps<P> = P & { className: string };
 
-function useStyles<P extends Props>(props: P): StyledProps<P> {
+function useStyles<P extends {}>(props: P): StyledProps<P> {
   const classNames: string[] = [];
   const newProps = {} as StyledProps<P>;
 
@@ -22,7 +21,9 @@ function useStyles<P extends Props>(props: P): StyledProps<P> {
     }
   }
 
-  newProps.className = classNames.length ? classNames.join(" ") : undefined;
+  if (classNames.length) {
+    newProps.className = classNames.join(" ");
+  }
 
   return newProps;
 }
