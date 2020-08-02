@@ -7,19 +7,21 @@ import type { Tag } from "./tags";
 
 export type Styled = CreateComponent & TagMethods;
 export type TagMethods = {
-  [T in Tag]: (...props: Props[]) => ReturnType<> StyledComponent<T>; // ReturnType<typeof createComponent>;
+  [T in Tag]: (...props: Props[]) => StyledComponent<T>;
 };
 
+/**
+ * Returns the tag methods (.div() etc) for the styled function
+ */
 function getTagMethods(): TagMethods {
   const tagMethods = {} as TagMethods;
-  tags.forEach(tag => {
-    tagMethods[tag] = (...props: Props[]) => createComponent(tag, ...props);
-  });
+  tags.forEach(tag => Object.assign(tagMethods, { [tag]: (...props: Props[]) => createComponent(tag, ...props) }));
   return tagMethods;
 }
 
+/**
+ * The `styled` function with static methods
+ */
 const styled: Styled = Object.assign(createComponent, getTagMethods());
 
 export default styled;
-
-const Div = styled.div();
