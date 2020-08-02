@@ -41,4 +41,4 @@ function getProps(...props: Props[]): Exclude<Props, "__useStyledProps"> {
   return deepmerge.all<Exclude<Props, "__useStyledProps">>(unrefedProps);
 }
 
-export default createComponentWithRef;
+export default createComponentWithRef as CreateComponent;

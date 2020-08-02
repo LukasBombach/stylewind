@@ -7,7 +7,7 @@ import type { Tag } from "./tags";
 
 export type Styled = CreateComponent & TagMethods;
 export type TagMethods = {
-  [T in Tag]: (...props: Props[]) => StyledComponent<T>;
+  [T in Tag]: (...props: Props[]) => ReturnType<> StyledComponent<T>; // ReturnType<typeof createComponent>;
 };
 
 function getTagMethods(): TagMethods {
@@ -21,3 +21,5 @@ function getTagMethods(): TagMethods {
 const styled: Styled = Object.assign(createComponent, getTagMethods());
 
 export default styled;
+
+const Div = styled.div();

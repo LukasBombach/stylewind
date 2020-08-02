@@ -4,6 +4,7 @@
   "main": "index.js",
   "author": "Lukas Bombach",
   "license": "MIT",
+  "types": "index.ts",
   "devDependencies": {
     "microbundle": "0.12.3",
     "typescript": "3.9.7"
