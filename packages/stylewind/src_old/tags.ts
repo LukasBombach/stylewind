@@ -1,4 +1,4 @@
-export const tags = [
+const tags = [
   "a",
   "abbr",
   "address",
@@ -113,29 +113,8 @@ export const tags = [
   "var",
   "video",
   "wbr",
-
-  // SVG
-  "circle",
-  "clipPath",
-  "defs",
-  "ellipse",
-  "foreignObject",
-  "g",
-  "image",
-  "line",
-  "linearGradient",
-  "mask",
-  "path",
-  "pattern",
-  "polygon",
-  "polyline",
-  "radialGradient",
-  "rect",
-  "stop",
-  "svg",
-  "text",
-  "tspan",
 ] as const;
 
 export type Tags = typeof tags;
 export type Tag = Tags[number];
+export default tags;

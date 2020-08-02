@@ -1,7 +1,11 @@
 {
-  "name": "tailwind-bridge",
+  "name": "stylewind-bridge",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Lukas Bombach",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "microbundle": "0.12.3",
+    "typescript": "3.9.7"
+  }
 }
