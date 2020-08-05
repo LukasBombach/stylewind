@@ -9,7 +9,7 @@ function useStyledProps<P extends Props>({ className, ...props }: P): StyledProp
 
   for (const name in props) {
     if (isTailwindProp(name)) {
-      classNames.push(getTailwindClasses(props[name]));
+      classNames.push(getTailwindClasses(name, props[name]));
     } else {
       newProps[name as keyof P] = props[name];
     }
