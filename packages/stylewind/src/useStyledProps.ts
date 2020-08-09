@@ -1,4 +1,5 @@
-import { isTailwindProp, getTailwindClasses } from "stylewind-bridge";
+import { isTailwindProp } from "stylewind-bridge";
+import getTailwindClasseNames from "./getTailwindClasseNames";
 
 export type Props = Record<string, any>;
 export type StyledProps<P> = P & { className?: string };
@@ -9,7 +10,7 @@ function useStyledProps<P extends Props>({ className, ...props }: P): StyledProp
 
   for (const name in props) {
     if (isTailwindProp(name)) {
-      classNames.push(getTailwindClasses(name, props[name]));
+      classNames.push(getTailwindClasseNames(name, props[name]));
     } else {
       newProps[name as keyof P] = props[name];
     }

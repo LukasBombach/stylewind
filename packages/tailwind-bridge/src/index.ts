@@ -1,19 +1,28 @@
-import { promises as fs } from "fs";
-import { resolve } from "path";
+import { getTailWindClassNames } from "./getTailWindCss";
 
-const nodeModule = (path: string) => resolve(__dirname, "..", "node_modules", path);
-const dist = (path: string) => resolve(__dirname, "..", "dist", path);
+getTailWindClassNames().then(classNames => {
+  const identifiers = classNames
+    .filter(className => !/^(sm|md|lg|xl):/.test(className))
+    .filter(className => !/^(focus|hover):/.test(className))
+    .filter(className => !/^-/.test(className))
+    .map(className => className.replace(/^([^-]+).*/, "$1"))
+    .filter((className, i, arr) => arr.indexOf(className) === i);
 
-const tailwindCSSPath = nodeModule("tailwindcss/dist/tailwind.css");
+  const responsive = classNames
+    .filter(className => /^(sm|md|lg|xl):/.test(className))
+    .map(className => className.replace(/^(sm|md|lg|xl):(.*)/, "$2"));
 
-async function getTailWindCss(): Promise<string> {
-  return await fs.readFile(tailwindCSSPath, "utf-8");
-}
+  const focus = classNames
+    .filter(className => /^focus:/.test(className))
+    .map(className => className.replace(/^focus:(.*)/, "$1"));
 
-async function generateProps() {}
+  const hover = classNames
+    .filter(className => /^hover:/.test(className))
+    .map(className => className.replace(/^hover:(.*)/, "$1"));
 
-async function generateIsTailwindProp() {}
-
-async function generateGetTailwindClasses() {}
-
-function isTailwindProp(name: string, value: any) {}
+  console.log(identifiers.length, "/", classNames.length);
+  console.log("identifiers", identifiers);
+  console.log("responsive", responsive);
+  console.log("focus", focus);
+  console.log("hover", hover);
+});
