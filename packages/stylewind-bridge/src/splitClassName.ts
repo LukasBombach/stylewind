@@ -1,15 +1,3 @@
-// xl:focus:bg-gray-400
-// sm:hover:border-teal-300
-// -rotate-180
-// absolute
-
-// const identifiers = classNames
-//   .filter(className => !/^(sm|md|lg|xl):/.test(className))
-//   .filter(className => !/^(focus|hover):/.test(className))
-//   .filter(className => !/^-/.test(className))
-//   .map(className => className.replace(/^([^-]+).*/, "$1"))
-//   .filter((className, i, arr) => arr.indexOf(className) === i);
-
 type Breakpoint = "sm" | "md" | "lg" | "xl";
 
 interface SplitClassName {
