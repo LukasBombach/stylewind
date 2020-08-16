@@ -4,6 +4,7 @@ import getProps from "./getProps";
 
 const dist = (p = "") => path.resolve(__dirname, "../dist", p);
 
+// todo this code is not pretty, but I just wanna release
 async function getInterface() {
   const props = await getProps();
 
@@ -37,7 +38,8 @@ async function run() {
 
   await fs.rmdir(dist(), { recursive: true });
   await fs.mkdir(dist());
-  await fs.writeFile(dist("index.ts"), contents);
+  await fs.writeFile(dist("index.d.ts"), contents);
+  await fs.writeFile(dist("index.js"), "module.exports = null;");
 }
 
 run();
