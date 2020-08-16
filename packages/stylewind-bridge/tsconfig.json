@@ -1,8 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./dist"
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "lib": ["es2019"]
   },
-  "extends": "../../tsconfig.json",
   "include": ["./src/**/*"],
   "exclude": ["./dist/**/*", "node_modules"]
 }
