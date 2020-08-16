@@ -12,7 +12,8 @@
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --collectCoverage"
   },
   "dependencies": {
     "stylewind-bridge": "1.0.0"
