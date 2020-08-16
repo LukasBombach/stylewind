@@ -38,6 +38,10 @@ the rendered result will be a component with the corresponding `className`s.
 </button>
 ```
 
+And will look like this
+
+![](https://github.com/LukasBombach/stylewind/blob/master/documentation/button.png)
+
 ## Installation
 
 ```bash
