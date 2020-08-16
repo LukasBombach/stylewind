@@ -6,7 +6,7 @@ Styled Components API for Tailwind CSS in just `427 B`
 
 <p>
   <a href="https://github.com/LukasBombach/stylewind/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/stylewind.svg" alt="License"></a>
-  <a href="https://github.com/stylewind/releases"><img src="https://img.shields.io/npm/v/stylewind.svg" alt="Latest Release"></a>
+  <a href="https://www.npmjs.com/package/stylewind"><img src="https://img.shields.io/npm/v/stylewind.svg" alt="Latest Release"></a>
   <a href="http://www.typescriptlang.org"><img src="https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg" alt="TypeScript"></a>
   <a href="https://codeclimate.com/github/LukasBombach/stylewind"><img src="https://img.shields.io/codeclimate/coverage/LukasBombach/stylewind" alt="Coverage"></a>
 </p>
