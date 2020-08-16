@@ -124,7 +124,8 @@ const Link = styled.a({
 });
 ```
 
-For an overiew of the all props, you can read the definitions in [their TypeScript definitions file](../stylewind-bridge/dist/index.d.ts)
+For an overiew of the all props, you can read the definitions in
+[their TypeScript definitions file](https://github.com/LukasBombach/stylewind/blob/master/packages/stylewind-bridge/dist/index.d.ts)
 
 ### Typescript
 
