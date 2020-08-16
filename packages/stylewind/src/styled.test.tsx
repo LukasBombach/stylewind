@@ -19,18 +19,20 @@ describe.each(tags)("styled", tag => {
   test('text: "blue-100" renders the expected className', () => {
     const Component = styled[tag]({ text: "blue-100" });
     const { container } = render(<Component />);
-    expect(container.firstElementChild?.className).toBe("text-blue-100");
+    expect(container.firstElementChild?.className).toBe("text text-blue-100");
   });
 
   test('text: ["blue-100", "yellow-100"] renders the expected className', () => {
     const Component = styled[tag]({ text: ["blue-100", "yellow-100"] });
     const { container } = render(<Component />);
-    expect(container.firstElementChild?.className).toBe("text-blue-100 text-yellow-100");
+    expect(container.firstElementChild?.className).toBe("text text-blue-100 text-yellow-100");
   });
 
   test('text: ["blue-100", "hover:yellow-100", "xl:hover:red-100"] renders the expected className', () => {
     const Component = styled[tag]({ text: ["blue-100", "hover:yellow-100", "xl:hover:red-100"] });
     const { container } = render(<Component />);
-    expect(container.firstElementChild?.className).toBe("text-blue-100 hover:text-yellow-100 xl:hover:text-red-100");
+    expect(container.firstElementChild?.className).toBe(
+      "text text-blue-100 hover:text-yellow-100 xl:hover:text-red-100",
+    );
   });
 });
