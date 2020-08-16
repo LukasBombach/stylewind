@@ -1,4 +1,4 @@
-![](../../documentation/logo.svg)
+![](https://github.com/LukasBombach/stylewind/blob/master/documentation/logo.svg)
 
 # Stylewind
 
