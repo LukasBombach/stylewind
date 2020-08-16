@@ -16,8 +16,9 @@ describe.each(tags)("styled", tag => {
     expect(container.firstElementChild).toMatchInlineSnapshot(`<${tag} />`);
   });
 
-  /* test("prop", () => {
-    const Div = styled.div()
-
-  }) */
+  test('text: "2xl" renders the className text:2xl', () => {
+    const Component = styled[tag]({ text: "2xl" });
+    const { container } = render(<Component />);
+    expect(container.firstElementChild?.className).toBe("text:2xl");
+  });
 });

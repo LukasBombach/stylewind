@@ -15,8 +15,8 @@ export type TagMethods = {
 function createComponent<T extends Tag>(el: T, props: StylewindProps = {}): StyledComponent<T> {
   return componentProps => {
     const mergedProps = Object.assign({}, props, componentProps);
-    const styledProps = useStyledProps(mergedProps);
-    return createElement(el, styledProps);
+    const className = useStyledProps(mergedProps);
+    return createElement(el, { className });
   };
 }
 
