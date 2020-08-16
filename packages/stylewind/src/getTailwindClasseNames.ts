@@ -1,6 +1,7 @@
 function getTailwindClasseNames(name: string, value: unknown | unknown[]) {
   const values = Array.isArray(value) ? value : [value];
-  return values.map(val => getTailwindClasseName(name, val)).join(" ");
+  const valuesClassNames = values.map(val => getTailwindClasseName(name, val));
+  return [name, ...valuesClassNames].join(" ");
 }
 
 // todo this code is not pretty, but I just wanna release
