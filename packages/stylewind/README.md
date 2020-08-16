@@ -22,9 +22,8 @@ const Button = styled.button({
   font: "bold",
   rounded: "sm",
   shadow: "md",
+  bg: "purple-500",
   p: 4,
-  bg: ["purple-500", "hover:purple-400"],
-  outline: "focus:none",
 });
 
 export default () => <Button>My Button</Button>;
