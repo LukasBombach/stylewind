@@ -128,3 +128,13 @@ For an overiew of the all props, you can read the definitions in [their TypeScri
 ### Typescript
 
 The API and the generated components have full TypeScript support
+
+# Questions & Support
+
+Please feel free to [submit an issue](https://github.com/LukasBombach/stylewind/issues) for questions or bugs / problems you found.
+
+You can try to ping me on Twitter at [@luke_schmuke](https://twitter.com/luke_schmuke), but I will be a dad soon and might not be able to respond immediately.
+
+# License
+
+MIT
