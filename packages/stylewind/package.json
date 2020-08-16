@@ -10,10 +10,9 @@
   "unpkg": "dist/index.umd.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "build": "yarn generate && microbundle",
-    "dev": "yarn generate && microbundle watch",
-    "test": "yarn generate && jest",
-    "generate": "ts-node scripts/generateDevelopmentFiles.ts"
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "jest"
   },
   "dependencies": {
     "stylewind-bridge": "1.0.0"

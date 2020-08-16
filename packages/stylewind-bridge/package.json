@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Lukas Bombach",
   "license": "MIT",
-  "main": "dist/index.ts",
+  "main": "index.js",
   "types": "dist/index.ts",
   "devDependencies": {
     "microbundle": "0.12.3",
