@@ -9,8 +9,7 @@ const Layout = styled.main({
 });
 
 const Grid = styled.div({
-  "sm:grid": "cols-1",
-  "md:grid": "cols-3",
+  grid: ["sm:cols-1", "md:cols-3"],
   gap: 4,
 });
 
@@ -21,8 +20,8 @@ const Headline = styled.h1({
 });
 
 const NewsletterSignup = styled.footer({
-  "md:flex": true,
-  "md:items": "center",
+  flex: true,
+  items: "center",
 });
 
 const NewsLetterHeadline = styled.h2({
@@ -31,11 +30,11 @@ const NewsLetterHeadline = styled.h2({
 });
 
 const Left = styled.div({
-  "md:w": "1/12",
+  w: "1/12",
 });
 
 const Right = styled.div({
-  "md:w": "4/12",
+  w: "4/12",
 });
 
 const IndexPage = () => (
@@ -49,14 +48,10 @@ const IndexPage = () => (
     <NewsletterSignup>
       <NewsLetterHeadline>Signup (fake)</NewsLetterHeadline>
       <Left>
-        <Label for="email-input">Email</Label>
+        <Label>Email</Label>
       </Left>
       <Right>
-        <Input
-          id="email-input"
-          type="text"
-          placeholder="won't work, this is just fake UI"
-        />
+        <Input id="email-input" type="text" placeholder="won't work, this is just fake UI" />
       </Right>
     </NewsletterSignup>
   </Layout>
