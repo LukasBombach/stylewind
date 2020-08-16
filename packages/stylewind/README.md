@@ -47,9 +47,9 @@ And will look like this
 yarn add stylewind # npm i stylewind
 ```
 
-`stylewind` generates components that have Tailwind's class names applied, but it does not add Tailwind CSS to your project.
-This way, you can decide how you want to add Tailwind to your project, but in order to see its styles, you need to add
-it to you project.
+> `stylewind` generates components that have Tailwind's class names applied, but it does not add Tailwind CSS to your project.
+> This way, you can decide how you want to add Tailwind to your project, but in order to see its styles, you need to add
+> it to you project.
 
 To learn how to install Tailwind CSS, [follow the guides on tailwindcss.com](https://tailwindcss.com/docs/installation).
 
