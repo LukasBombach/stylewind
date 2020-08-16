@@ -2,7 +2,14 @@
 
 # Stylewind
 
-**Styled Components API for Tailwind CSS in just `427 B`**
+Styled Components API for Tailwind CSS in just `427 B`
+
+<p>
+    <a href="https://github.com/stylewind/releases"><img src="https://img.shields.io/npm/v/stylewind.svg" alt="Latest Release"></a>
+    <a href="https://github.com/stylewind/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/stylewind.svg" alt="License"></a>
+</p>
+
+---
 
 Create components by passing Tailwind properties to the styled api
 
