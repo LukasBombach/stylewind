@@ -1,4 +1,4 @@
-![](https://github.com/LukasBombach/stylewind/blob/master/documentation/logo.svg)
+![](https://github.com/LukasBombach/stylewind/raw/master/documentation/logo.svg)
 
 # Stylewind
 
@@ -41,7 +41,7 @@ the rendered result will be a component with the corresponding `className`s.
 
 And will look like this
 
-![](https://github.com/LukasBombach/stylewind/blob/master/documentation/button.png)
+![](https://github.com/LukasBombach/stylewind/raw/master/documentation/button.png)
 
 ## Installation
 

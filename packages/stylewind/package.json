@@ -1,7 +1,7 @@
 {
   "name": "stylewind",
   "version": "1.0.2",
-  "repository": "https://github.com/LukasBombach/stylewind/tree/master/packages/stylewind",
+  "repository": "https://github.com/LukasBombach/stylewind",
   "author": "Lukas Bombach <lukas.bombach@googlemail.com>",
   "license": "MIT",
   "source": "src/index.ts",
