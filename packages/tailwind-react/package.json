@@ -1,8 +1,12 @@
 {
-  "name": "stylewind",
-  "version": "2.0.0",
+  "name": "tailwind-react",
+  "version": "1.0.0",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
+  "scripts": {
+    "typedefs": "tsc src/index.ts --declaration --emitDeclarationOnly"
+  },
   "peerDependencies": {
     "react": "*",
     "tailwindcss": "*"
@@ -11,6 +15,7 @@
     "@swc/cli": "0.1.55",
     "@swc/core": "1.2.124",
     "@types/react": "17.0.38",
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "typescript": "4.5.4"
   }
 }
