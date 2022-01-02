@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "main": "index.js",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "*",
+    "tailwindcss": "*"
+  },
   "devDependencies": {
     "@swc/cli": "0.1.55",
     "@swc/core": "1.2.124",

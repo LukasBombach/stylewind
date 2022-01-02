@@ -6,4 +6,5 @@ module.exports = config({
   output: { path: resolve(__dirname, "lib") },
   mode: "production",
   target: "browser",
+  externalModules: ["react"],
 });
