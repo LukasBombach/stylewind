@@ -1,19 +1,7 @@
 {
-  "name": "stylewind-monorepo",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/LukasBombach/stylewind",
-  "author": "Lukas Bombach <lukas.bombach@googlemail.com>",
-  "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "lerna run build --stream --include-dependencies --scope \"stylewind\"",
-    "coverage": "lerna run coverage --stream --include-dependencies --scope \"stylewind\""
-  },
-  "dependencies": {
-    "lerna": "3.22.1"
-  }
+    "packages/*",
+    "examples/*"
+  ]
 }
