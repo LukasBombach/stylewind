@@ -1,16 +1,14 @@
 import type { NextPage } from "next";
 import styled from "tailwind-react";
 
-const Test = styled("div", "text-3xl font-bold underline");
+const Headline = styled("h1", "text-xl font-bold");
+const Link = styled("a", "text-m underline");
 
 const Home: NextPage = () => {
   return (
     <main>
-      <h1 className="">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
-
-      <Test>test</Test>
+      <Headline>Headline</Headline>
+      <Link href="/">Link</Link>
     </main>
   );
 };

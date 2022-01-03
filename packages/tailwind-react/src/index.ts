@@ -4,13 +4,19 @@ import type { FC } from "react";
 
 type Props = Record<string, unknown>;
 type TagName = keyof JSX.IntrinsicElements;
-type Styles = string | ((props: Props) => string);
-type ClassNameProp = { className?: string };
-type SFC<P extends Props = {}, S extends Styles = string> = FC<S extends string ? ClassNameProp : ClassNameProp & P>;
+type NativeProps<T extends TagName> = JSX.IntrinsicElements[T] & { className?: string };
 
-function styled<P extends Props = {}, S extends Styles = string>(tagName: TagName, styles: S): SFC<P, S> {
-  const StyledComponent: SFC<P, S> = ({ children, ...props }) => {
-    const tailwindClasses = typeof styles === "function" ? styles(props) : styles;
+type Styles = string | ((props: Props) => string);
+type SFC<T extends TagName, P extends Props = {}, S extends Styles = string> = FC<
+  S extends string ? NativeProps<T> : NativeProps<T> & P
+>;
+
+function styled<T extends TagName, P extends Props = {}, S extends Styles = string>(
+  tagName: T,
+  styles: S
+): SFC<T, P, S> {
+  const StyledComponent: SFC<T, P, S> = ({ children, ...props }) => {
+    const tailwindClasses = typeof styles === "string" ? styles : styles(props);
     const className = props.className ? `${props.className} ${tailwindClasses}` : tailwindClasses;
     return createElement(tagName, { ...props, className }, children);
   };
