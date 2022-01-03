@@ -1,10 +1,20 @@
 {
   "name": "tailwind-react",
   "version": "1.0.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "license": "MIT",
+  "type": "module",
+  "source": "src/index.ts",
+  "main": "./lib/index.cjs",
+  "types": "lib/index.d.ts",
+  "module": "./lib/index.module.js",
+  "unpkg": "./lib/index.umd.js",
+  "exports": {
+    "require": "./lib/index.cjs",
+    "default": "./lib/index.modern.js"
+  },
   "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "typedefs": "tsc src/index.ts --declaration --emitDeclarationOnly"
   },
   "peerDependencies": {
@@ -15,6 +25,7 @@
     "@swc/cli": "0.1.55",
     "@swc/core": "1.2.124",
     "@types/react": "17.0.38",
+    "microbundle": "0.14.2",
     "react": "17.0.2",
     "typescript": "4.5.4"
   }
