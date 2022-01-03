@@ -26,4 +26,8 @@ function styled<T extends TagName, P extends Props = {}, S extends Styles = stri
   return StyledComponent;
 }
 
-export default styled;
+const styledTagApi = new Proxy(styled, {
+  get: (_, tagName, receiver) => (styles: Styles) => styled(tagName as any as TagName, styles),
+});
+
+export default styledTagApi;
