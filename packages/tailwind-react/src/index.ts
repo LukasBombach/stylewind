@@ -13,7 +13,7 @@ type ClassNameProp = { className?: string };
 
 function styled<P extends Props = {}, S = Styles>(
   tagName: TagName,
-  styles: S,
+  styles: S
 ): FC<S extends string ? ClassNameProp : ClassNameProp & P> {
   return ({ children, ...props }) => {
     const tailwindClasses = typeof styles === "function" ? styles(props) : styles;
