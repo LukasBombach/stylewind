@@ -7,9 +7,14 @@ type TagName = keyof JSX.IntrinsicElements;
 type NativeProps<T extends TagName> = JSX.IntrinsicElements[T] & { className?: string };
 
 type Styles = string | ((props: Props) => string);
+
 type SFC<T extends TagName, P extends Props = {}, S extends Styles = string> = FC<
   S extends string ? NativeProps<T> : NativeProps<T> & P
 >;
+
+type TaggedStyleApi = {
+  [T in TagName]: <P extends Props = {}, S extends Styles = string>(styles: Styles) => SFC<T, P, S>;
+};
 
 function styled<T extends TagName, P extends Props = {}, S extends Styles = string>(
   tagName: T,
@@ -26,8 +31,8 @@ function styled<T extends TagName, P extends Props = {}, S extends Styles = stri
   return StyledComponent;
 }
 
-const styledTagApi = new Proxy(styled, {
+const taggedStyleApi = new Proxy(styled, {
   get: (_, tagName, receiver) => (styles: Styles) => styled(tagName as any as TagName, styles),
-});
+}) as any as typeof styled & TaggedStyleApi;
 
-export default styledTagApi;
+export default taggedStyleApi;

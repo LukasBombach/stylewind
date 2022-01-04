@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
 import styled from "tailwind-react";
 
-const Headline = styled.h1("text-xl font-bold");
+const Headline = styled.h1(`text-xl font-bold`);
 
-const Link = styled.a("text-m underline");
+const Link = styled.a(`text-m underline`);
 
-const Button = styled.button(`text-sm
+const Button = styled.button(`
+  text-sm
   font-semibold
   bg-gray-800
   text-gray-300
